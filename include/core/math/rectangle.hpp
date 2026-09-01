@@ -5,6 +5,7 @@
 
 /**
  * @file rectangle.hpp
+ * 
  * @brief Defines the math::Rectangle type.
  */
 
@@ -15,6 +16,8 @@ namespace math {
 	 * @brief Represents an axis-aligned rectangle.
 	 *
 	 * A rectangle is defined by its position and strictly positive dimensions.
+	 *
+	 * @headerfile core/math/rectangle.hpp
 	 *
 	 * @invariant w() > 0
 	 * @invariant h() > 0

@@ -1,7 +1,7 @@
 #include <cmath>
 #include <gtest/gtest.h>
 
-#include "core/math/rectangle.hpp"
+#include <core/math/rectangle.hpp>
 
 TEST(RectangleTest, Constructor) {
 	math::Rectangle rect {12.0f, 10.0f, 10.0f, 20.0f};

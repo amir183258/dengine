@@ -27,7 +27,8 @@ target_include_directories(dengine PRIVATE
 
 # unit tests files
 add_executable(unit_tests
-	tests/unit_tests/test_rectangle.cpp
+	${PROJECT_SOURCE_DIR}/tests/unit_tests/test_rectangle.cpp
+	${PROJECT_SOURCE_DIR}/tests/unit_tests/test_vector_2d.cpp
 )
 
 target_include_directories(unit_tests PRIVATE
@@ -38,4 +39,6 @@ target_link_libraries(unit_tests PRIVATE
 	GTest::GTest
 	GTest::Main
 	pthread
+
+	dengine
 )

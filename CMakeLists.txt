@@ -16,6 +16,15 @@ pkg_check_modules(SDL3_IMAGE REQUIRED sdl3-image)
 pkg_check_modules(SDL3_TTF REQUIRED sdl3-ttf)
 pkg_check_modules(SDL3_MIXER REQUIRED sdl3-mixer)
 
+# engine lib
+add_library(dengine STATIC
+	${PROJECT_SOURCE_DIR}/src/core/math/vector_2d.cpp
+)
+
+target_include_directories(dengine PRIVATE
+	${PROJECT_SOURCE_DIR}/include
+)
+
 # unit tests files
 add_executable(unit_tests
 	tests/unit_tests/test_rectangle.cpp

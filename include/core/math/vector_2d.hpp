@@ -1,5 +1,4 @@
-#ifndef CORE_MATH_VECTOR_2D_HPP
-#define CORE_MATH_VECTOR_2D_HPP
+#pragma once
 
 /**
  * @file vector_2d.hpp
@@ -163,5 +162,3 @@ namespace math {
 		return (a - b).length_squared();
 	}
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef CORE_MATH_RECTANGLE_HPP
-#define CORE_MATH_RECTANGLE_HPP
+#pragma once
 
 #include <cassert>
 
@@ -118,5 +117,3 @@ namespace math {
 		}
 	};
 } // namespace math
-
-#endif // CORE_MATH_RECTANGLE_HPP

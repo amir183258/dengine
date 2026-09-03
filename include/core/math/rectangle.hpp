@@ -19,7 +19,7 @@
 
 #include <cassert>
 
-namespace math {
+namespace dengine::math {
 
 	/**
 	 * @struct Rectangle

@@ -15,24 +15,24 @@
 #include <core/math/rectangle.hpp>
 
 TEST(RectangleTest, Constructor) {
-	math::Rectangle rect {12.0f, 10.0f, 10.0f, 20.0f};
+	dengine::math::Rectangle rect {12.0f, 10.0f, 10.0f, 20.0f};
 	SUCCEED();
 }
 
 #ifndef NDEBUG
 TEST(RectangleTest, WidthCannotBeNegative) {
-	EXPECT_DEATH(math::Rectangle rect(0.0f, 0.0f, -5.0f, 10.0f), "width");
+	EXPECT_DEATH(dengine::math::Rectangle rect(0.0f, 0.0f, -5.0f, 10.0f), "width");
 	SUCCEED();
 }
 
 TEST(RectangleTest, HeightCannotBeNegative) {
-	EXPECT_DEATH(math::Rectangle rect(0.0f, 0.0f, 5.0f, -10.0f), "height");
+	EXPECT_DEATH(dengine::math::Rectangle rect(0.0f, 0.0f, 5.0f, -10.0f), "height");
 	SUCCEED();
 }
 #endif
 
 TEST(RectangleTest, Getters) {
-	math::Rectangle rect {3.0f, 5.0f, 7.0f, 11.0f};
+	dengine::math::Rectangle rect {3.0f, 5.0f, 7.0f, 11.0f};
 
 	EXPECT_FLOAT_EQ(rect.x(), 3.0f);
 	EXPECT_FLOAT_EQ(rect.y(), 5.0f);
@@ -43,7 +43,7 @@ TEST(RectangleTest, Getters) {
 }
 
 TEST(RectangleTest, Setters) {
-	math::Rectangle rect {3.0f, 5.0f, 7.0f, 11.0f};
+	dengine::math::Rectangle rect {3.0f, 5.0f, 7.0f, 11.0f};
 
 	rect.set_position(13.0f, 17.0f);
 

@@ -23,7 +23,7 @@
  * @brief Defines the math::Vector2D type.
  */
 
-namespace math {
+namespace dengine::math {
 
 	/**
 	 * @struct Vector2D

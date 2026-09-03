@@ -9,6 +9,12 @@
  *
  */
 
+/**
+ * @file vector_2d.hpp
+ *
+ * @brief Defines the math::Vector2D type.
+ */
+
 #pragma once
 
 /**

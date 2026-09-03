@@ -9,15 +9,15 @@
  *
  */
 
-#pragma once
-
-#include <cassert>
-
 /**
  * @file rectangle.hpp
  * 
  * @brief Defines the math::Rectangle type.
  */
+
+#pragma once
+
+#include <cassert>
 
 namespace math {
 

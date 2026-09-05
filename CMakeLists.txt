@@ -59,3 +59,20 @@ target_link_libraries(unit_tests PRIVATE
 
 	dengine
 )
+
+# integration tests files
+add_executable(integration_tests
+	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_time_provider.cpp
+)
+
+target_include_directories(integration_tests PRIVATE
+	${PROJECT_SOURCE_DIR}/include
+)
+
+target_link_libraries(integration_tests PRIVATE
+	GTest::GTest
+	GTest::Main
+	pthread
+
+	dengine
+)

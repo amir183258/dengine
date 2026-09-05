@@ -36,6 +36,10 @@ target_include_directories(unit_tests PRIVATE
 	${PROJECT_SOURCE_DIR}/include
 )
 
+target_include_directories(unit_tests PRIVATE
+	${PROJECT_SOURCE_DIR}/tests/mocks
+)
+
 target_link_libraries(unit_tests PRIVATE
 	GTest::GTest
 	GTest::Main

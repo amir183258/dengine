@@ -49,6 +49,6 @@ namespace dengine {
 		/**
 		 * @brief The interface virtual defualt destructor.
 		 */
-		virtual ~TimeProvider = default;
+		virtual ~TimeProvider() = default;
 	};
 }

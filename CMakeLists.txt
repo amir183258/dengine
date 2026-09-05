@@ -19,6 +19,7 @@ pkg_check_modules(SDL3_MIXER REQUIRED sdl3-mixer)
 # engine lib
 add_library(dengine STATIC
 	${PROJECT_SOURCE_DIR}/src/core/math/vector_2d.cpp
+	${PROJECT_SOURCE_DIR}/src/core/time/sdl_time_provider.cpp
 )
 
 target_include_directories(dengine PRIVATE

@@ -34,9 +34,6 @@ add_executable(unit_tests
 
 target_include_directories(unit_tests PRIVATE
 	${PROJECT_SOURCE_DIR}/include
-)
-
-target_include_directories(unit_tests PRIVATE
 	${PROJECT_SOURCE_DIR}/tests/mocks
 )
 

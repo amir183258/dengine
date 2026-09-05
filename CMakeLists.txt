@@ -24,6 +24,20 @@ add_library(dengine STATIC
 
 target_include_directories(dengine PRIVATE
 	${PROJECT_SOURCE_DIR}/include
+
+	# SDL3
+	${SDL3_INCLUDE_DIRS}
+	${SDL3_IMAGE_INCLUDE_DIRS}
+	${SDL3_TIF_INCLUDE_DIRS}
+	${SDL3_MIXER_INCLUDE_DIRS}
+)
+
+target_link_libraries(dengine PRIVATE
+	# SDL3
+	${SDL3_LIBRARIES}
+	${SDL3_IMAGE_LIBRARIES}
+	${SDL3_TIF_LIBRARIES}
+	${SDL3_MIXER_LIBRARIES}
 )
 
 # unit tests files

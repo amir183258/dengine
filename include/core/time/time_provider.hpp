@@ -25,7 +25,8 @@ namespace dengine {
 	 * @class TimeProvider
 	 * @brief Represents an abstract time provider.
 	 *
-	 * TimeProvider returns current millisecond and it can sleep.
+	 * TimeProvider class can return current millisecond and
+	 * it can sleep.
 	 *
 	 * @headerfile core/time/time_provider.hpp
 	 */

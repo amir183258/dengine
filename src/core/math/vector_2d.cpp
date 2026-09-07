@@ -10,6 +10,7 @@
  */
 
 #include <cmath>
+
 #include <core/math/vector_2d.hpp>
 
 namespace dengine {

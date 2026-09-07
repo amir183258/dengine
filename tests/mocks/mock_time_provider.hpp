@@ -26,11 +26,13 @@
  *
  * Advances time manually via sleep_ms() instead of system clock.
  */
-class MockTimeProvider : public TimeProvider {
-private:
-public:
-	uint32_t current = 0; // simulated time in millisecond
+namespace dengine::tests {
+	class MockTimeProvider : public TimeProvider {
+	private:
+	public:
+		uint32_t current = 0; // simulated time in millisecond
 
-	uint32_t now_ms() override { return current; }
-	void sleep_ms(uint32_t ms) override { current += ms; }
-};
+		uint32_t now_ms() override { return current; }
+		void sleep_ms(uint32_t ms) override { current += ms; }
+	};
+}

@@ -34,7 +34,8 @@ namespace dengine {
 	public:
 		/**
 		 * @brief Initializes the specific subsystem (e.g., SDL3).
-		 * @return true if successful, false otherwise.
+		 *
+		 * @return True if successful, false otherwise.
 		 */
 		virtual bool initialize() = 0;
 

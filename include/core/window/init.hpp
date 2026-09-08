@@ -49,7 +49,7 @@ namespace dengine {
 		 *
 		 * @return True if initialized and false otherwise.
 		 */
-		virtual is_initialized() const = 0;
+		virtual bool is_initialized() const = 0;
 
 		/**
 		 * @brief The interface virtual default constructor.

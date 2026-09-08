@@ -46,6 +46,8 @@ namespace dengine {
 
 		/**
 		 * @brief Checks if the subsystem is currently active.
+		 *
+		 * @return True if initialized and false otherwise.
 		 */
 		virtual is_initialized() const = 0;
 

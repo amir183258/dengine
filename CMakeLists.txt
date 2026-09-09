@@ -47,6 +47,7 @@ add_executable(unit_tests
 	${PROJECT_SOURCE_DIR}/tests/unit_tests/test_rectangle.cpp
 	${PROJECT_SOURCE_DIR}/tests/unit_tests/test_vector_2d.cpp
 	${PROJECT_SOURCE_DIR}/tests/unit_tests/test_color.cpp
+	${PROJECT_SOURCE_DIR}/tests/unit_tests/test_fps_handler.cpp
 )
 
 target_include_directories(unit_tests PRIVATE

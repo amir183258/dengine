@@ -38,4 +38,8 @@ namespace dengine {
 	bool SDLInit::is_initialized() const {
 		return initialized;
 	}
+
+	SDLInit::~SDLInit() {
+		shutdown();
+	}
 }

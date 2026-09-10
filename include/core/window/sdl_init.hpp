@@ -61,8 +61,8 @@ namespace dengine {
 		[[nodiscard]] bool is_initialized() const override;
 
 		/**
-		 * @brief The destructor is default.
+		 * @brief The destructor calls shutdown.
 		 */
-		~SDLInit() = default;
+		~SDLInit();
 	};
 }

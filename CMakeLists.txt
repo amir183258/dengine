@@ -20,6 +20,7 @@ pkg_check_modules(SDL3_MIXER REQUIRED sdl3-mixer)
 add_library(dengine STATIC
 	${PROJECT_SOURCE_DIR}/src/core/math/vector_2d.cpp
 	${PROJECT_SOURCE_DIR}/src/core/time/sdl_time_provider.cpp
+	${PROJECT_SOURCE_DIR}/src/core/window/sdl_window.cpp
 	${PROJECT_SOURCE_DIR}/src/core/window/sdl_init.cpp
 	${PROJECT_SOURCE_DIR}/src/engine/fps_handler.cpp
 )

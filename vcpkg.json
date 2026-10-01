@@ -7,5 +7,6 @@
 		"sdl3-ttf",
 		"sdl3-mixer",
 		"gtest"
-	]
+	],
+	"builtin-baseline": "382a8264585c7606342898c62c3e1e92d667104b"
 }

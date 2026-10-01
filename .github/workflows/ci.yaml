@@ -9,6 +9,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: lukka/run-vcpkg@v11
+        id: runvcpkg
         with:
           vcpkgJsonGlob: 'vcpkg.json'
 

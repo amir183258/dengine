@@ -8,46 +8,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Build Tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake build-essential libgtest-dev libx11-dev
-
-      - name: Install SDL3 Dependencies
-        run: |
-          # SDL3
-          git clone --depth 1 https://github.com/libsdl-org/SDL.git
-          cd SDL
-          cmake -B build -DSDL_TEST=OFF
-          sudo cmake --build build --target install
-          cd ..
-
-          # SDL3_image
-          git clone --depth 1 https://github.com/libsdl-org/SDL_image.git
-          cd SDL_image
-          cmake -B build -DSDL3IMAGE_TEST=OFF
-          sudo cmake --build build --target install
-          cd ..
-
-          # SDL3_ttf
-          git clone --depth 1 https://github.com/libsdl-org/SDL_ttf.git
-          cd SDL_ttf
-          cmake -B build -DSDL3TTF_TEST=OFF
-          sudo cmake --build build --target install
-          cd ..
-
-          # SDL3_mixer
-          git clone --depth 1 https://github.com/libsdl-org/SDL_mixer.git
-          cd SDL_mixer
-          cmake -B build -DSDL3MIXER_TEST=OFF
-          sudo cmake --build build --target install
-          cd ..
+      - uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgJsonGlob: 'vcpkg.json'
 
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+        run: >
+          cmake -B build -S .
+          -DCMAKE_TOOLCHAIN_FILE=${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake
+      -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
-        run: cmake --build build --config Release
+        run: cmake --build build
 
       - name: Run Tests
         run: ctest --test-dir build --output-on-failure

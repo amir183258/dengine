@@ -1,0 +1,130 @@
+name: Build and Test Dengine on Linux
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # SDL3 files to cache
+      DEPS_DIR: ${{ github.workspace }}/dependencies
+
+    steps:
+      - uses: actions/checkout@v4
+
+        # SDL3 dependencies
+      - name: Install SDL3 Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwayland-dev libxkbcommon-dev \
+          libx11-dev libxcursor-dev libxi-dev libxinerama-dev \
+          libxrandr-dev libxss-dev libxtst-dev libxxf86vm-dev \
+          libgtest-dev libpng-dev libjpeg-dev libtiff-dev \
+          libvorbis-dev libogg-dev libflac-dev libmp3lame-dev \
+          libfreetype6-dev libharfbuzz-dev
+
+        # cache dependencies
+      - name: Cache Dependencies
+        id: cache-dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DEPS_DIR }}
+          key: ${{ runner.os }}-dependencies-v2
+
+        # download and build SDL3
+      - name: Build and Install SDL3
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch main https://github.com/libsdl-org/SDL.git sdl3-src
+          mkdir -p sdl3-build
+          cd sdl3-build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ env.DEPS_DIR }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DSDL_SHARED=ON \
+                -DSDL_STATIC=OFF \
+                ../sdl3-src
+          cmake --build . --parallel $(nproc)
+          cmake --install .
+
+        # download and build SDL3-image
+      - name: Build and Install SDL3-image
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch main \
+          https://github.com/libsdl-org/SDL_image.git sdl3-image-src
+
+          mkdir -p sdl3-image-build
+          cd sdl3-image-build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ env.DEPS_DIR }} \
+                -DCMAKE_PREFIX_PATH=${{ env.DEPS_DIR }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DSDL3IMAGE_TESTS=OFF \
+                ../sdl3-image-src
+          cmake --build . --parallel $(nproc)
+          cmake --install .
+
+        # download and build SDL3-ttf
+      - name: Build and Install SDL3-ttf
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch main \
+          https://github.com/libsdl-org/SDL_ttf.git sdl3-ttf-src
+
+          mkdir -p sdl3-ttf-build
+          cd sdl3-ttf-build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ env.DEPS_DIR }} \
+                -DCMAKE_PREFIX_PATH=${{ env.DEPS_DIR }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DSDL3_TIF_TESTS=OFF \
+                ../sdl3-ttf-src
+          cmake --build . --parallel $(nproc)
+          cmake --install .
+
+        # download and build SDL3-mixer
+      - name: Build and Install SDL3-mixer
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch main \
+          https://github.com/libsdl-org/SDL_mixer.git sdl3-mixer-src
+
+          mkdir -p sdl3-mixer-build
+          cd sdl3-mixer-build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ env.DEPS_DIR }} \
+                -DCMAKE_PREFIX_PATH=${{ env.DEPS_DIR }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DSDL3_MIXER_TESTS=OFF \
+                ../sdl3-mixer-src
+          cmake --build . --parallel $(nproc)
+          cmake --install .
+
+        # dengine need gtest for its tests
+      - name: Build and Install GTest
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch v1.14.0 \
+          https://github.com/google/googletest.git gtest-src
+
+          mkdir -p gtest-build
+          cd gtest-build
+          cmake -DCMAKE_INSTALL_PREFIX=${{ env.DEPS_DIR }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -Dgtest_build_samples=OFF\
+                -Dgtest_build_tests=off \
+                ../gtest-src
+          cmake --build . --parallel $(nproc)
+          cmake --install .
+
+        # build the project
+      - name: Bulid Dengine
+        run: |
+          mkdir build && cd build
+          cmake -DCMAKE_PREFIX_PATH=${{ env.DEPS_DIR }} ..
+          cmake --build .
+
+        # test the project
+      - name: Test Dengine
+        run: |
+          cd build
+          # use dummy video driver in SDL3
+          export SDL_VIDEODRIVER=dummy
+          ctest --output-on-failure

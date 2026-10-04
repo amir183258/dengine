@@ -3,7 +3,7 @@ name: Build and Test Dengine on Linux
 on: [push, pull_request]
 
 jobs:
-  build:
+  build-test-linux:
     runs-on: ubuntu-latest
     env:
       # SDL3 files to cache

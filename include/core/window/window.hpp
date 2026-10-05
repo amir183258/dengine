@@ -48,7 +48,7 @@ namespace dengine {
 		virtual uint32_t get_height() const = 0;
 
 		/**
-		 * @brief The interface virtual defualt destructor.
+		 * @brief The abstract class virtual default destructor.
 		 */
 		virtual ~Window() = default;
 	};

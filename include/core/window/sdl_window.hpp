@@ -112,6 +112,13 @@ namespace dengine {
 		uint32_t get_height() const override;
 
 		/**
+		 * @brief Returns the native SDL window handle.
+		 *
+		 * @return The current SDL window or nullptr.
+		 */
+		[[nodiscard]] SDL_Window& get_sdl_window_handle() const;
+
+		/**
 		 * @brief The virtual destructor which overrides.
 		 */
 		~SDLWindow() override;

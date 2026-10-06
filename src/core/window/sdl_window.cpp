@@ -64,6 +64,10 @@ namespace dengine {
 		return static_cast<uint32_t>(h);
 	}
 
+	SDL_Window& SDLWindow::get_sdl_window_handle() const {
+		return *window;
+	}
+
 	SDLWindow::~SDLWindow() {
 		if (window)
 			SDL_DestroyWindow(window);

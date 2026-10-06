@@ -49,7 +49,7 @@ namespace dengine {
 		 *
 		 * Creates a 640 x 480 window with the title "Dengine Game".
 		 *
-		 * @warning SDLInit must be started before createing window.
+		 * @warning SDLInit must be started before creating window.
 		 */
 		SDLWindow();
 

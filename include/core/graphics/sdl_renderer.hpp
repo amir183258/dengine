@@ -97,6 +97,13 @@ namespace dengine {
 		void clear() override;
 
 		/**
+		 * @brief Returns the native SDL renderer handle.
+		 *
+		 * @return The current SDL renderer or nullptr.
+		 */
+		[[nodiscard]] SDL_Renderer& get_sdl_renderer_handle() const;
+
+		/**
 		 * @brief The destructor of SDLRenderer.
 		 */
 		~SDLRenderer();

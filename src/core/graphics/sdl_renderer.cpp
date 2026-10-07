@@ -24,6 +24,10 @@ namespace dengine {
 		SDL_RenderClear(renderer_);
 	}
 
+	SDL_Renderer& SDLRenderer::get_sdl_renderer_handle() const {
+		return *renderer_;
+	}
+
 	SDLRenderer::~SDLRenderer() {
 		if (renderer_)
 			SDL_DestroyRenderer(renderer_);

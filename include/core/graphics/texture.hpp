@@ -20,6 +20,10 @@
 #include <cstdint>
 
 namespace dengine {
+	class Renderer;
+}
+
+namespace dengine {
 
 	/**
 	 * @class Texture
@@ -32,7 +36,50 @@ namespace dengine {
 	 */
 	class Texture {
 	private:
+	protected:
+		/**
+		 * The renderer of the texture.
+		 */
+		Renderer &renderer_;
 	public:
+		/**
+		 * @brief Deleted default constructor.
+		 *
+		 * Texture needs a Renderer to work, so there is no
+		 * default constructor.
+		 */
+		Texture() = delete;
+
+		/**
+		 * @brief Constructor using Renderer.
+		 *
+		 * There must be a renderer for every texture.
+		 *
+		 * @param renderer The renderer for the texture.
+		 */
+		explicit Texture(Renderer &renderer);
+
+		// no copy and move for texture class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		Texture(const Texture&) = delete;
+
+		/**
+		 * @brief Copy assignment deleted.
+		 */
+		Texture& operator=(const Texture&) = delete;
+
+		/**
+		 * @brief Move Constructor deleted.
+		 */
+		Texture(Texture&&) = delete; 
+
+		/**
+		 * @brief Move assignment deleted.
+		 */
+		Texture& operator=(Texture&&) = delete;
+
 		/**
 		 * @brief Returns the width of the texture.
 		 *
@@ -51,5 +98,5 @@ namespace dengine {
 		 * @brief The abstract class virtual default destructor.
 		 */
 		virtual ~Texture() = default;
-	}
+	};
 }

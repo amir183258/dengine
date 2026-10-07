@@ -70,7 +70,6 @@ namespace dengine {
 		 */
 		SDLRenderer& operator=(const SDLRenderer&) = delete;
 
-		// can move
 		/**
 		 * @brief Move constructor deleted.
 		 */

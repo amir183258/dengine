@@ -17,6 +17,7 @@
 
 #pragma once
 
+#include <string>
 #include <cstdint>
 
 namespace dengine {
@@ -38,27 +39,10 @@ namespace dengine {
 	private:
 	protected:
 		/**
-		 * The renderer of the texture.
+		 * @brief Default constructor.
 		 */
-		Renderer &renderer_;
+		Texture() = default;
 	public:
-		/**
-		 * @brief Deleted default constructor.
-		 *
-		 * Texture needs a Renderer to work, so there is no
-		 * default constructor.
-		 */
-		Texture() = delete;
-
-		/**
-		 * @brief Constructor using Renderer.
-		 *
-		 * There must be a renderer for every texture.
-		 *
-		 * @param renderer The renderer for the texture.
-		 */
-		explicit Texture(Renderer &renderer);
-
 		// no copy and move for texture class.
 		/**
 		 * @brief Copy constructor deleted.

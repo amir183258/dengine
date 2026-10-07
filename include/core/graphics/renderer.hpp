@@ -59,6 +59,27 @@ namespace dengine {
 		 */
 		explicit Renderer(Window &window);
 
+		// no copy and move for renderer class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		Renderer(const Renderer&) = delete;
+
+		/**
+		 * @brief Copy assignment deleted.
+		 */
+		Renderer& operator=(const Renderer&) = delete;
+
+		/**
+		 * @brief Move constructor delete.
+		 */
+		Renderer(Renderer&&) = delete;
+
+		/**
+		 * @brief Move assignment delete.
+		 */
+		Renderer& operator=(Renderer&&) = delete;
+
 		/**
 		 * @brief Clears window.
 		 */

@@ -38,27 +38,10 @@ namespace dengine {
 	private:
 	protected:
 		/**
-		 * The window of the renderer.
+		 * @brief Default constructor.
 		 */
-		Window &window_;
+		Renderer() = default;
 	public:
-		/**
-		 * @brief Deleted default constructor.
-		 *
-		 * Renderer needs Window to work, so there is no
-		 * default constructor.
-		 */
-		Renderer() = delete;
-
-		/**
-		 * @breif Constructor using Window.
-		 * 
-		 * There must be a window for rendering objects.
-		 *
-		 * @param window The window to render.
-		 */
-		explicit Renderer(Window &window);
-
 		// no copy and move for renderer class.
 		/**
 		 * @brief Copy constructor deleted.

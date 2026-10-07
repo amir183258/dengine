@@ -15,8 +15,7 @@
 #include <core/window/sdl_window.hpp>
 
 namespace dengine {
-	SDLRenderer::SDLRenderer(SDLWindow &window): Renderer {window}
-	{
+	SDLRenderer::SDLRenderer(SDLWindow &window) {
 		renderer_ = SDL_CreateRenderer(&window.get_sdl_window_handle(), nullptr);
 	}
 

@@ -91,6 +91,8 @@ namespace dengine {
 
 		/**
 		 * @brief Clears window.
+		 *
+		 * @note The clear color can be changed.
 		 */
 		void clear() override;
 

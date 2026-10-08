@@ -31,6 +31,7 @@ add_executable(integration_tests
 
 target_include_directories(integration_tests PRIVATE
 	${PROJECT_SOURCE_DIR}/include
+	${PROJECT_BINARY_DIR}/generated
 )
 
 target_link_libraries(integration_tests PRIVATE

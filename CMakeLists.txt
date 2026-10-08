@@ -5,6 +5,14 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE debug)
 
+# config macros
+set(TEST_ASSETS_PATH ${CMAKE_SOURCE_DIR}/tests/test_assets)
+
+configure_file(
+	${PROJECT_SOURCE_DIR}/config/config.hpp.in
+	${PROJECT_BINARY_DIR}/generated/config.hpp
+)
+
 enable_testing()
 
 # gtest

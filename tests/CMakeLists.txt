@@ -27,6 +27,7 @@ add_executable(integration_tests
 	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_init.cpp
 	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_window.cpp
 	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_renderer.cpp
+	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_texture.cpp
 )
 
 target_include_directories(integration_tests PRIVATE

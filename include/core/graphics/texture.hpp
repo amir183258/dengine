@@ -40,10 +40,12 @@ namespace dengine {
 	protected:
 		/**
 		 * @brief Default constructor.
+		 *
+		 * @note Protected to be used only by derived classes.
 		 */
 		Texture() = default;
 	public:
-		// no copy and move for texture class.
+		// no copy and move for Texture class.
 		/**
 		 * @brief Copy constructor deleted.
 		 */

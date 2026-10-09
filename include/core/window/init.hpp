@@ -31,7 +31,35 @@ namespace dengine {
 	 */
 	class Init {
 	private:
+	protected:
+		/**
+		 * @brief Default constructor.
+		 *
+		 * @note Protected to be used only by derived classes.
+		 */
+		Init() = default;
 	public:
+		// no copy and move for Init class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		Init(const Init&) = delete;
+
+		/**
+		 * @breif Copy assignment deleted.
+		 */
+		Init& operator=(const Init&) = delete;
+
+		/**
+		 * @breif Move constructor deleted.
+		 */
+		Init(Init&&) = delete;
+
+		/**
+		 * @brief Move assignment deleted.
+		 */
+		Init& operator=(Init&&) = delete;
+
 		/**
 		 * @brief Initializes the specific subsystem (e.g., SDL3).
 		 *

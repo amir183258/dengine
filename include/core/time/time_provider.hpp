@@ -32,7 +32,35 @@ namespace dengine {
 	 */
 	class TimeProvider {
 	private:
+	protected:
+		/**
+		 * @brief Default constructor.
+		 *
+		 * @note Protected to be used only by derived classes.
+		 */
+		TimeProvider() = default;
 	public:
+		// no copy and move for TimeProvider class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		TimeProvider(const TimeProvider&) = delete;
+
+		/**
+		 * @brief Copy assignment deleted.
+		 */
+		TimeProvider& operator=(const TimeProvider&) = delete;
+
+		/**
+		 * @brief Move Constructor deleted.
+		 */
+		TimeProvider(TimeProvider&&) = delete; 
+
+		/**
+		 * @brief Move assignment deleted.
+		 */
+		TimeProvider& operator=(TimeProvider&&) = delete;
+
 		/**
 		 * @brief Returns current millisecond.
 		 *

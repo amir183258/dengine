@@ -35,6 +35,32 @@ namespace dengine {
 	private:
 	public:
 		/**
+		 * @brief Default constructor.
+		 */
+		SDLTimeProvider() = default;
+
+		// no copy and move for SDLTimeProvider class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		SDLTimeProvider(const SDLTimeProvider&) = delete;
+
+		/**
+		 * @brief Copy assignment deleted.
+		 */
+		SDLTimeProvider& operator=(const SDLTimeProvider&) = delete;
+
+		/**
+		 * @brief Move Constructor deleted.
+		 */
+		SDLTimeProvider(SDLTimeProvider&&) = delete; 
+
+		/**
+		 * @brief Move assignment deleted.
+		 */
+		SDLTimeProvider& operator=(SDLTimeProvider&&) = delete;
+
+		/**
 		 * @brief Returns current millisecond.
 		 *
 		 * @return Current millisecond.

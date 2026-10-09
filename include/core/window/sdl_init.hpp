@@ -21,7 +21,6 @@
 
 namespace dengine {
 
-	
 	/**
 	 * @calss SDLInit
 	 * @brief Represents SDL3 initialization calss.
@@ -38,6 +37,27 @@ namespace dengine {
 		 * @brief Default contructor.
 		 */
 		SDLInit() = default;
+
+		// no copy and move for SDLInit class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		SDLInit(const SDLInit&) = delete;
+
+		/**
+		 * @breif Copy assignment deleted.
+		 */
+		SDLInit& operator=(const SDLInit&) = delete;
+
+		/**
+		 * @breif Move constructor deleted.
+		 */
+		SDLInit(SDLInit&&) = delete;
+
+		/**
+		 * @brief Move assignment deleted.
+		 */
+		SDLInit& operator=(SDLInit&&) = delete;
 
 		/**
 		 * @brief Initializes SDL3 needed subsystems.

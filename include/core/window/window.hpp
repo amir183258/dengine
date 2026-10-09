@@ -32,7 +32,35 @@ namespace dengine {
 	 */
 	class Window {
 	private:
+	protected:
+		/**
+		 * @brief Default constructor.
+		 *
+		 * @note Protected to be used only by derived classes.
+		 */
+		Window() = default;
 	public:
+		// no copy and move for Window class.
+		/**
+		 * @brief Copy constructor deleted.
+		 */
+		Window(const Window&) = delete;
+
+		/**
+		 * @breif Copy assignment deleted.
+		 */
+		Window& operator=(const Window&) = delete;
+
+		/**
+		 * @breif Move constructor deleted.
+		 */
+		Window(Window&&) = delete;
+
+		/**
+		 * @brief Move assignment deleted.
+		 */
+		Window& operator=(Window&&) = delete;
+
 		/**
 		 * @brief Returns the width of the window.
 		 *

@@ -64,6 +64,10 @@ namespace dengine {
 		return *this;
 	}
 
+	SDL_Texture& SDLTexture::get_sdl_texture_handle() const {
+		return *texture_;
+	}
+
 	uint32_t SDLTexture::width() const {
 		return static_cast<uint32_t>(width_);
 	}

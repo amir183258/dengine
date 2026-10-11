@@ -45,3 +45,17 @@ target_link_libraries(integration_tests PRIVATE
 )
 
 add_test(NAME IntegrationTests COMMAND integration_tests)
+
+# visual tests
+add_executable(test_rendering_on_screen
+	${PROJECT_SOURCE_DIR}/tests/visual_tests/test_rendering_on_screen.cpp
+)
+
+target_include_directories(test_rendering_on_screen PRIVATE
+	${PROJECT_SOURCE_DIR}/include
+	${PROJECT_BINARY_DIR}/generated
+)
+
+target_link_libraries(test_rendering_on_screen PRIVATE
+	dengine
+)

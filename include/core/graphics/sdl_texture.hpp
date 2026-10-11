@@ -108,6 +108,13 @@ namespace dengine {
 		[[nodiscard]] bool is_valid() const { return texture_ != nullptr; }
 
 		/**
+		 * @brief Returns the native SDL texture handle.
+		 *
+		 * @return The current SDL texture or nullptr.
+		 */
+		[[nodiscard]] SDL_Texture& get_sdl_texture_handle() const;
+
+		/**
 		 * @brief Returns the width of the texture file.
 		 *
 		 * @return Width of the texture.

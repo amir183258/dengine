@@ -22,7 +22,7 @@
 // for test assets
 #include <config.hpp>
 
-class SDLTexture : public ::testing::Test {
+class SDLTextureTest : public ::testing::Test {
 private:
 protected:
 	dengine::SDLInit init {};
@@ -48,7 +48,7 @@ protected:
 	}
 };
 
-TEST_F(SDLTexture, DefaultConstructor) {
+TEST_F(SDLTextureTest, DefaultConstructor) {
 	dengine::SDLTexture texture2 {};
 
 	EXPECT_FALSE(texture2.is_valid());
@@ -56,7 +56,7 @@ TEST_F(SDLTexture, DefaultConstructor) {
 	SUCCEED();
 }
 
-TEST_F(SDLTexture, MoveConstructor) {
+TEST_F(SDLTextureTest, MoveConstructor) {
 	dengine::SDLTexture texture1 {*renderer, texture_path};
 	EXPECT_TRUE(texture1.is_valid());
 
@@ -68,7 +68,7 @@ TEST_F(SDLTexture, MoveConstructor) {
 	SUCCEED();
 }
 
-TEST_F(SDLTexture, MoveAssignment) {
+TEST_F(SDLTextureTest, MoveAssignment) {
 	dengine::SDLTexture texture1 {*renderer, texture_path};
 	EXPECT_TRUE(texture1.is_valid());
 
@@ -83,7 +83,7 @@ TEST_F(SDLTexture, MoveAssignment) {
 	SUCCEED();
 }
 
-TEST_F(SDLTexture, WidthAndHeight) {
+TEST_F(SDLTextureTest, WidthAndHeight) {
 	EXPECT_EQ(texture->width(), 300);
 	EXPECT_EQ(texture->height(), 150);
 

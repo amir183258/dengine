@@ -27,6 +27,7 @@ namespace dengine {
 	class Renderer;
 	class Texture;
 	class TimeProvider;
+	class EventManager;
 }
 
 namespace dengine {
@@ -126,6 +127,15 @@ namespace dengine {
 		 * @return A unque pointer to the TimeProvider.
 		 */
 		virtual std::unique_ptr<TimeProvider> create_time_provider() = 0;
+
+		/**
+		 * @brief Creates an EventManager.
+		 *
+		 * The EventManager is determined in derived class.
+		 *
+		 * @return A unique pointer to the EventManager abstract class.
+		 */
+		virtual std::unique_ptr<EventManager> create_event_manager() = 0;
 		
 		/**
 		 * @brief The abstract class virtual default destructor.

@@ -21,15 +21,25 @@
 #include <core/graphics/texture.hpp>
 #include <core/time/time_provider.hpp>
 #include <engine/fps_handler.hpp>
+#include <core/event/event.hpp>
+#include <core/event/event_manager.hpp>
 
 #include <config.hpp>
 
 using namespace dengine;
 
 int main() {
-	SDLProvider provider;
+	SDLProvider provider {};
+
+	std::unique_ptr<Init> init = provider.create_init();
+	init->initialize();
+
 	std::unique_ptr<Window> window = provider.create_window("Test Window", 640, 800);
 	std::unique_ptr<Renderer> renderer = provider.create_renderer(*window);
+
+	// event manager
+	std::unique_ptr<EventManager> event_manager = provider.create_event_manager();
+	Event event {};
 
 	// load texture
 	std::unique_ptr<Texture> texture = provider.create_texture(*renderer,
@@ -40,7 +50,17 @@ int main() {
 	FPSHandler fps_handler {*time_provider};
 
 	// game loop
-	while (true) {
+	bool running = true;
+	while (running) {
+		event_manager->update();
+		while(event_manager->poll(event)) {
+			switch (event.type) {
+			case EventType::Quit:
+				running = false;
+				break;
+			}
+		}
+
 		fps_handler.begin_frame();
 
 		// clear

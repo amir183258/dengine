@@ -24,6 +24,8 @@
 #include <core/graphics/sdl_texture.hpp>
 #include <core/time/time_provider.hpp>
 #include <core/time/sdl_time_provider.hpp>
+#include <core/event/event_manager.hpp>
+#include <core/event/sdl_event_manager.hpp>
 
 namespace dengine {
 	std::unique_ptr<Init> SDLProvider::create_init() {
@@ -65,6 +67,13 @@ namespace dengine {
 			return texture_ptr;
 		else
 			return nullptr;
+	}
+
+	std::unique_ptr<EventManager> SDLProvider::create_event_manager() {
+		std::unique_ptr<SDLEventManager> event_manager =
+			std::make_unique<SDLEventManager>();
+
+		return event_manager;
 	}
 
 	std::unique_ptr<TimeProvider> SDLProvider::create_time_provider() {

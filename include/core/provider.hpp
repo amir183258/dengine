@@ -130,6 +130,6 @@ namespace dengine {
 		/**
 		 * @brief The abstract class virtual default destructor.
 		 */
-		~Provider() = default;
+		virtual ~Provider() = default;
 	};
 }

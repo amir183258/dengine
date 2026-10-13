@@ -21,10 +21,6 @@
 #include <cstdint>
 
 namespace dengine {
-	class Renderer;
-}
-
-namespace dengine {
 
 	/**
 	 * @class Texture

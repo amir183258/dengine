@@ -74,6 +74,16 @@ namespace dengine {
 		 */
 		explicit SDLTexture(SDLRenderer &renderer, const std::string &path);
 
+		/**
+		 * @brief Constructor using SDL_Texture.
+		 *
+		 * This constructore creates a SDLTexture using
+		 * SDL_Texture pointer.
+		 *
+		 * @param sdl_texture The native SDL_Texture pointer.
+		 */
+		explicit SDLTexture(SDL_Texture* sdl_texture);
+
 		// no copy
 		/**
 		 * @brief Copy constructor deleted.

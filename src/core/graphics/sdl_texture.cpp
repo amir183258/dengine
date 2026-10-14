@@ -37,6 +37,15 @@ namespace dengine {
 			SDL_GetTextureSize(texture_, &width_, &height_);
 	}
 
+	SDLTexture::SDLTexture(SDL_Texture *sdl_texture) {
+		if (!sdl_texture)
+			return; // invalid texture
+
+		texture_ = sdl_texture;
+
+		SDL_GetTextureSize(sdl_texture, &width_, &height_);
+	}
+
 	SDLTexture::SDLTexture(SDLTexture&& other) noexcept:
 		texture_ {other.texture_},
 		width_ {other.width_},

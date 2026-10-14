@@ -14,6 +14,9 @@
 
 #include <gtest/gtest.h>
 
+#include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
+
 #include <core/window/sdl_init.hpp>
 #include <core/window/sdl_window.hpp>
 #include <core/graphics/sdl_renderer.hpp>
@@ -52,6 +55,20 @@ TEST_F(SDLTextureTest, DefaultConstructor) {
 	dengine::SDLTexture texture2 {};
 
 	EXPECT_FALSE(texture2.is_valid());
+
+	SUCCEED();
+}
+
+TEST_F(SDLTextureTest, ConstructorUsingSDLNativeTexture) {
+	std::string texture_path = dengine::config::TEST_ASSETS_PATH +
+		"/test_texture.png";
+
+	SDL_Texture *sdl_texture =
+		IMG_LoadTexture(&renderer->get_sdl_renderer_handle(), texture_path.c_str());
+	EXPECT_NE(sdl_texture, nullptr);
+
+	dengine::SDLTexture texture2 {sdl_texture};
+	EXPECT_TRUE(texture2.is_valid());
 
 	SUCCEED();
 }

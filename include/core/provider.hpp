@@ -28,6 +28,7 @@ namespace dengine {
 	class Texture;
 	class TimeProvider;
 	class EventManager;
+	class TextMaker;
 }
 
 namespace dengine {
@@ -136,6 +137,19 @@ namespace dengine {
 		 * @return A unique pointer to the EventManager abstract class.
 		 */
 		virtual std::unique_ptr<EventManager> create_event_manager() = 0;
+
+		/**
+		 * @brief Creates a TextMaker.
+		 *
+		 * The TextMaker is determined in derived class.
+		 *
+		 * @param renderer The renderer reference used to make text texture.
+		 * @param font_path The font path for the text maker.
+		 *
+		 * @return A unique pointer to the TextMaker abstract class.
+		 */
+		virtual std::unique_ptr<TextMaker> create_text_maker(Renderer &renderer,
+				const std::string &font_path) = 0;
 		
 		/**
 		 * @brief The abstract class virtual default destructor.

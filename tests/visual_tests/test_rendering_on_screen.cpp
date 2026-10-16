@@ -23,6 +23,7 @@
 #include <engine/fps_handler.hpp>
 #include <core/event/event.hpp>
 #include <core/event/event_manager.hpp>
+#include <core/graphics/text_maker.hpp>
 
 #include <config.hpp>
 
@@ -48,6 +49,12 @@ int main() {
 	// time management
 	std::unique_ptr<TimeProvider> time_provider = provider.create_time_provider();
 	FPSHandler fps_handler {*time_provider};
+
+	// text maker
+	std::unique_ptr<TextMaker> text_maker =
+		provider.create_text_maker(*renderer,
+		config::TEST_ASSETS_PATH + "/press_start_font.ttf");
+	std::unique_ptr<Texture> text_texture = text_maker->make_text("Hello, World!");
 
 	// game loop
 	bool running = true;
@@ -85,6 +92,9 @@ int main() {
 
 		// draw texture
 		renderer->draw_texture(*texture, 300.0f, 400.0f);
+
+		// draw text texture
+		renderer->draw_texture(*text_texture, 200.0f, 700.0f);
 
 		renderer->present();
 

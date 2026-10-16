@@ -26,6 +26,8 @@
 #include <core/time/sdl_time_provider.hpp>
 #include <core/event/event_manager.hpp>
 #include <core/event/sdl_event_manager.hpp>
+#include <core/graphics/text_maker.hpp>
+#include <core/graphics/sdl_text_maker.hpp>
 
 namespace dengine {
 	std::unique_ptr<Init> SDLProvider::create_init() {
@@ -69,6 +71,10 @@ namespace dengine {
 			return nullptr;
 	}
 
+	std::unique_ptr<TimeProvider> SDLProvider::create_time_provider() {
+		return std::make_unique<SDLTimeProvider>();
+	}
+
 	std::unique_ptr<EventManager> SDLProvider::create_event_manager() {
 		std::unique_ptr<SDLEventManager> event_manager =
 			std::make_unique<SDLEventManager>();
@@ -76,7 +82,16 @@ namespace dengine {
 		return event_manager;
 	}
 
-	std::unique_ptr<TimeProvider> SDLProvider::create_time_provider() {
-		return std::make_unique<SDLTimeProvider>();
+	std::unique_ptr<TextMaker> SDLProvider::create_text_maker(Renderer &renderer,
+			const std::string &font_path)
+	{
+		int default_font_size = 24;
+
+		SDLRenderer &sdl_renderer = static_cast<SDLRenderer&>(renderer);
+		std::unique_ptr<SDLTextMaker> text_maker =
+			std::make_unique<SDLTextMaker>(&sdl_renderer, font_path,
+					default_font_size);
+
+		return text_maker;
 	}
 }

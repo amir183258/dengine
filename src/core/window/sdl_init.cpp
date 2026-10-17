@@ -11,6 +11,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include <core/window/sdl_init.hpp>
 
@@ -21,7 +22,7 @@ namespace dengine {
 		if (is_initialized())
 			return true;
 
-		if (!SDL_Init(SDL_INIT_VIDEO) || TTF_Init() == false)
+		if (!SDL_Init(SDL_INIT_VIDEO) || !TTF_Init() || !MIX_Init())
 			return false;
 
 		initialized = true;

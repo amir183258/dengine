@@ -102,14 +102,14 @@ namespace dengine {
 		 *
 		 * @return The current width of the window.
 		 */
-		uint32_t get_width() const override;
+		[[nodiscard]] uint32_t get_width() const override;
 
 		/**
 		 * @brief Returns the current height of the window.
 		 *
 		 * @return The current height of the window.
 		 */
-		uint32_t get_height() const override;
+		[[nodiscard]] uint32_t get_height() const override;
 
 		/**
 		 * @brief Returns the native SDL window handle.

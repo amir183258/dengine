@@ -127,4 +127,5 @@ jobs:
           cd build
           # use dummy video driver in SDL3
           export SDL_VIDEODRIVER=dummy
+          export SDL_AUDIODRIVER= dummy
           ctest --output-on-failure

@@ -76,6 +76,13 @@ namespace dengine {
 		[[nodiscard]] bool is_valid() const { return mixer_ != nullptr; }
 
 		/**
+		 * @brief Returns the native SDL mixer handle.
+		 *
+		 * @return The current SDL mixer or nullptr.
+		 */
+		[[nodiscard]] MIX_Mixer& get_sdl_mixer_handle() const;
+
+		/**
 		 * @brief The abstract class virtual default destructor.
 		 */
 		virtual ~SDLMixer() = default;

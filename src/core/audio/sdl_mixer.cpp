@@ -18,4 +18,8 @@ namespace dengine {
 	SDLMixer::SDLMixer() {
 		mixer_ = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, nullptr);
 	}
+
+	MIX_Mixer& SDLMixer::get_sdl_mixer_handle() const {
+		return *mixer_;
+	}
 }

@@ -10,7 +10,7 @@
  */
 
 /**
- * @file audio.hpp
+ * @file mixer.hpp
  * 
  * @brief Defines the mixer for the engine.
  */

@@ -22,4 +22,9 @@ namespace dengine {
 	MIX_Mixer& SDLMixer::get_sdl_mixer_handle() const {
 		return *mixer_;
 	}
+
+	SDLMixer::~SDLMixer() {
+		if (mixer_)
+			MIX_DestroyMixer(mixer_);
+	}
 }

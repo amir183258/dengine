@@ -36,6 +36,7 @@ add_library(dengine STATIC
 	${PROJECT_SOURCE_DIR}/src/core/event/sdl_event_manager.cpp
 	${PROJECT_SOURCE_DIR}/src/core/graphics/sdl_text_maker.cpp
 	${PROJECT_SOURCE_DIR}/src/core/audio/sdl_mixer.cpp
+	${PROJECT_SOURCE_DIR}/src/core/audio/sdl_audio.cpp
 	${PROJECT_SOURCE_DIR}/src/engine/fps_handler.cpp
 )
 

@@ -83,8 +83,8 @@ namespace dengine {
 		[[nodiscard]] MIX_Mixer& get_sdl_mixer_handle() const;
 
 		/**
-		 * @brief The abstract class virtual default destructor.
+		 * @brief The destructor of SDLMixer.
 		 */
-		virtual ~SDLMixer() = default;
+		~SDLMixer();
 	};
 }

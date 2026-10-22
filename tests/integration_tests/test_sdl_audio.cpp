@@ -47,3 +47,9 @@ TEST_F(SDLAudioTest, AudioIsValid) {
 
 	SUCCEED();
 }
+
+TEST_F(SDLAudioTest, PlayAudio) {
+	audio->play();
+
+	SUCCEED();
+}

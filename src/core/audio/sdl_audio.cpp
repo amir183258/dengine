@@ -17,12 +17,18 @@
 
 namespace dengine {
 
-	SDLAudio::SDLAudio(SDLMixer &mixer, const std::string &path) {
+	SDLAudio::SDLAudio(SDLMixer &mixer, const std::string &path):
+		mixer_ {&mixer}
+	{
 		audio_ = MIX_LoadAudio(&mixer.get_sdl_mixer_handle(), path.c_str(), true);
 	}
 
 	MIX_Audio& SDLAudio::get_sdl_audio_handle() const {
 		return *audio_;
+	}
+
+	void SDLAudio::play() const {
+		MIX_PlayAudio(&mixer_->get_sdl_mixer_handle(), audio_);
 	}
 
 	SDLAudio::~SDLAudio() {

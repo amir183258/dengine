@@ -60,6 +60,11 @@ namespace dengine {
 		Audio& operator=(Audio&&) = delete;
 
 		/**
+		 * This method plays the audio.
+		 */
+		virtual void play() const = 0;
+
+		/**
 		 * @brief The abstract class virtual default destructor.
 		 */
 		virtual ~Audio() = default;

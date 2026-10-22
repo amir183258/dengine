@@ -44,6 +44,11 @@ namespace dengine {
 		 * @brief The underlying SDL audio handle.
 		 */
 		MIX_Audio* audio_;
+
+		/**
+		 * @brief The mixer used to play the audio.
+		 */
+		const SDLMixer* const mixer_;
 	public:
 		/**
 		 * @brief Default constructor deleted.
@@ -95,6 +100,11 @@ namespace dengine {
 		 * @return The current SDL audio or nullptr.
 		 */
 		[[nodiscard]] MIX_Audio& get_sdl_audio_handle() const;
+
+		/**
+		 * @brief Plays the audio.
+		 */
+		void play() const;
 
 		/**
 		 * @brief The destructor of SDLAudio.

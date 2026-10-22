@@ -28,6 +28,10 @@
 #include <core/event/sdl_event_manager.hpp>
 #include <core/graphics/text_maker.hpp>
 #include <core/graphics/sdl_text_maker.hpp>
+#include <core/audio/mixer.hpp>
+#include <core/audio/sdl_mixer.hpp>
+#include <core/audio/audio.hpp>
+#include <core/audio/sdl_audio.hpp>
 
 namespace dengine {
 	std::unique_ptr<Init> SDLProvider::create_init() {
@@ -93,5 +97,19 @@ namespace dengine {
 					default_font_size);
 
 		return text_maker;
+	}
+
+	std::unique_ptr<Mixer> SDLProvider::create_mixer() {
+		return std::make_unique<SDLMixer>();
+	}
+
+	std::unique_ptr<Audio> SDLProvider::create_audio(Mixer &mixer,
+			const std::string &path)
+	{
+		SDLMixer &sdl_mixer = static_cast<SDLMixer&>(mixer);
+		std::unique_ptr<SDLAudio> audio = std::make_unique<SDLAudio>(sdl_mixer,
+				path);
+
+		return audio;
 	}
 }

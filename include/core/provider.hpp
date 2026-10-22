@@ -29,6 +29,8 @@ namespace dengine {
 	class TimeProvider;
 	class EventManager;
 	class TextMaker;
+	class Mixer;
+	class Audio;
 }
 
 namespace dengine {
@@ -150,6 +152,28 @@ namespace dengine {
 		 */
 		virtual std::unique_ptr<TextMaker> create_text_maker(Renderer &renderer,
 				const std::string &font_path) = 0;
+
+		/**
+		 * @brief Creates a Mixer.
+		 *
+		 * The Mixer is determined in derived class.
+		 *
+		 * @return A unique pointer to the Mixer abstract class.
+		 */
+		virtual std::unique_ptr<Mixer> create_mixer() = 0;
+
+		/**
+		 * @brief Creates an Audio.
+		 *
+		 * The audio is determined in derived class.
+		 *
+		 * @param mixer The mixer of the audio.
+		 * @param path The path of the audio file.
+		 *
+		 * @return A unique pointer to the Audio abstract class.
+		 */
+		virtual std::unique_ptr<Audio> create_audio(Mixer &mixer,
+				const std::string &path) = 0;
 		
 		/**
 		 * @brief The abstract class virtual default destructor.

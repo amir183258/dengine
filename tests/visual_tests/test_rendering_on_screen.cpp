@@ -24,6 +24,8 @@
 #include <core/event/event.hpp>
 #include <core/event/event_manager.hpp>
 #include <core/graphics/text_maker.hpp>
+#include <core/audio/mixer.hpp>
+#include <core/audio/audio.hpp>
 
 #include <config.hpp>
 
@@ -55,6 +57,16 @@ int main() {
 		provider.create_text_maker(*renderer,
 		config::TEST_ASSETS_PATH + "/press_start_font.ttf");
 	std::unique_ptr<Texture> text_texture = text_maker->make_text("Hello, World!");
+
+	// mixer and audio
+	std::unique_ptr<Mixer> mixer =
+		provider.create_mixer();
+
+	std::unique_ptr<Audio> audio =
+		provider.create_audio(*mixer,
+		config::TEST_ASSETS_PATH + "/test_audio.wav");
+
+	audio->play(); // play the audio
 
 	// game loop
 	bool running = true;

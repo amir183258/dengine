@@ -38,6 +38,7 @@ add_library(dengine STATIC
 	${PROJECT_SOURCE_DIR}/src/core/audio/sdl_mixer.cpp
 	${PROJECT_SOURCE_DIR}/src/core/audio/sdl_audio.cpp
 	${PROJECT_SOURCE_DIR}/src/engine/fps_handler.cpp
+	${PROJECT_SOURCE_DIR}/src/engine/animation.cpp
 )
 
 target_include_directories(dengine PRIVATE

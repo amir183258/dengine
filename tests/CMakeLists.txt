@@ -33,6 +33,7 @@ add_executable(integration_tests
 	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_text_maker.cpp
 	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_mixer.cpp
 	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_sdl_audio.cpp
+	${PROJECT_SOURCE_DIR}/tests/integration_tests/test_animation.cpp
 )
 
 target_include_directories(integration_tests PRIVATE

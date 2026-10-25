@@ -26,6 +26,8 @@
 #include <core/graphics/text_maker.hpp>
 #include <core/audio/mixer.hpp>
 #include <core/audio/audio.hpp>
+#include <engine/animation.hpp>
+#include <engine/frame_clock.hpp>
 
 #include <config.hpp>
 
@@ -52,6 +54,8 @@ int main() {
 	std::unique_ptr<TimeProvider> time_provider = provider.create_time_provider();
 	FPSHandler fps_handler {*time_provider};
 
+	FrameClock clock {time_provider.get()};
+
 	// text maker
 	std::unique_ptr<TextMaker> text_maker =
 		provider.create_text_maker(*renderer,
@@ -67,6 +71,15 @@ int main() {
 		config::TEST_ASSETS_PATH + "/test_audio.wav");
 
 	audio->play(); // play the audio
+
+	// animation
+	std::unique_ptr<Texture> animation_texture = provider.create_texture(*renderer,
+			config::TEST_ASSETS_PATH + "/test_animation.png");
+	std::unique_ptr<Animation> animation =
+		std::make_unique<Animation>(animation_texture.get(), 5, 0.13f);
+
+	math::Rectangle animation_dest_rect {100.0f, 400.0f,
+		(float)animation->width() * 3, (float)animation->width() * 3};
 
 	// game loop
 	bool running = true;
@@ -107,6 +120,12 @@ int main() {
 
 		// draw text texture
 		renderer->draw_texture(*text_texture, 200.0f, 700.0f);
+
+		// draw animation
+		clock.update();
+		animation->update(clock.get_delta_time());
+		FrameInfo info = animation->get_current_frame_info();
+		renderer->draw_texture(*info.texture, info.rect, animation_dest_rect);
 
 		renderer->present();
 

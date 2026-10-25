@@ -37,15 +37,13 @@ namespace dengine {
 	 * @headerfile engine/animation.hpp
 	 */
 	struct FrameInfo {
-		const Texture* texture;
+		Texture* texture;
 		math::Rectangle rect;
 	};
 
 	/**
 	 * @class Animation
-	 *
-	 * This class is used to create animations using
-	 * textures.
+	 * @brief This class is used to create animations using textures.
 	 *
 	 * @headerfile engine/animation.hpp
 	 */
@@ -56,7 +54,7 @@ namespace dengine {
 		 *
 		 * @note The animation does not own the texture.
 		 */
-		const Texture* const texture_;
+		Texture* texture_;
 
 		/**
 		 * @brief The number of frames in the texture.

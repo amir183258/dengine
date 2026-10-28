@@ -1,9 +1,16 @@
-cmake_minimum_required(VERSION 3.16)
-project(DENGINE)
+cmake_minimum_required(VERSION 3.20)
+project(dengine VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_BUILD_TYPE debug)
+
+if (NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the build type" FORCE)
+endif()
+
+# for installing
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
 # config macros
 set(TEST_ASSETS_PATH ${CMAKE_SOURCE_DIR}/tests/test_assets)
@@ -17,7 +24,6 @@ enable_testing()
 
 # gtest
 find_package(GTest REQUIRED)
-
 # SDL3
 find_package(SDL3 REQUIRED)
 find_package(SDL3_image REQUIRED)
@@ -41,17 +47,57 @@ add_library(dengine STATIC
 	${PROJECT_SOURCE_DIR}/src/engine/animation.cpp
 	${PROJECT_SOURCE_DIR}/src/engine/frame_clock.cpp
 )
+add_library(dengine::dengine ALIAS dengine)
 
-target_include_directories(dengine PRIVATE
-	${PROJECT_SOURCE_DIR}/include
+target_include_directories(dengine PUBLIC
+	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-target_link_libraries(dengine PRIVATE
+target_link_libraries(dengine PUBLIC
 	SDL3::SDL3
 	SDL3_image::SDL3_image
 	SDL3_ttf::SDL3_ttf
 	SDL3_mixer::SDL3_mixer
 )
 
+# install
+install(TARGETS dengine
+	EXPORT dengine-targets
+	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(EXPORT dengine-targets
+	FILE dengine-targets.cmake
+	NAMESPACE dengine::
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/dengine
+)
+
+write_basic_package_version_file(
+	    "${CMAKE_CURRENT_BINARY_DIR}/dengine-config-version.cmake"
+	    VERSION ${PROJECT_VERSION}
+	    COMPATIBILITY ExactVersion
+)
+
+configure_package_config_file(
+	"cmake/dengine-config.in.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/dengine-config.cmake"
+	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/dengine
+)
+
+install(FILES
+	"${CMAKE_CURRENT_BINARY_DIR}/dengine-config.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/dengine-config-version.cmake"
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/dengine
+)
+
 # for tests
 add_subdirectory(tests)
+
+# install and uninstall
+include(CPack)

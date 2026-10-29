@@ -59,7 +59,7 @@ add_library(dengine::dengine ALIAS dengine)
 target_include_directories(dengine PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
 	$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/generated>
-	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/dengine>
 )
 
 target_link_libraries(dengine PUBLIC
@@ -78,8 +78,8 @@ install(TARGETS dengine
 	INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(DIRECTORY ${PROJECT_BINARY_DIR}/generated/  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dengine)
+install(DIRECTORY ${PROJECT_BINARY_DIR}/generated/  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dengine)
 
 install(EXPORT dengine-targets
 	FILE dengine-targets.cmake

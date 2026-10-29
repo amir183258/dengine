@@ -17,6 +17,10 @@
 
 #pragma once
 
+#include <string>
+
+#include <version.hpp>
+
 namespace dengine {
 
 	/**
@@ -78,6 +82,15 @@ namespace dengine {
 		 * @return True if initialized and false otherwise.
 		 */
 		virtual bool is_initialized() const = 0;
+
+		/**
+		 * @brief Returns the version of dengine.
+		 *
+		 * @return The version of dengine.
+		 */
+		static std::string get_version() {
+			return DENGINE_VERSION_STRING;
+		}
 
 		/**
 		 * @brief The interface virtual default constructor.

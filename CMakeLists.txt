@@ -16,8 +16,15 @@ include(CMakePackageConfigHelpers)
 set(TEST_ASSETS_PATH ${CMAKE_SOURCE_DIR}/tests/test_assets)
 
 configure_file(
+	${PROJECT_SOURCE_DIR}/config/version.hpp.in
+	${PROJECT_BINARY_DIR}/generated/version.hpp
+	@ONLY
+)
+
+configure_file(
 	${PROJECT_SOURCE_DIR}/config/config.hpp.in
 	${PROJECT_BINARY_DIR}/generated/config.hpp
+	@ONLY
 )
 
 enable_testing()
@@ -51,6 +58,7 @@ add_library(dengine::dengine ALIAS dengine)
 
 target_include_directories(dengine PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+	$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/generated>
 	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
@@ -71,6 +79,7 @@ install(TARGETS dengine
 )
 
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY ${PROJECT_BINARY_DIR}/generated/  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(EXPORT dengine-targets
 	FILE dengine-targets.cmake

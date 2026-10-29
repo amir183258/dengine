@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2026 dengine project
+ *
+ * This is the source code of the dengine project.
+ * It is licensed under the MIT License; you should have received a copy
+ * of the license in this archive (see LICENSE).
+ *
+ * Author: Amir Hossein Ebrahimi
+ *
+ */
+
+#pragma once
+
+#define DENGINE_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define DENGINE_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define DENGINE_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define DENGINE_VERSION_STRING "@PROJECT_VERSION@"
